@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Словесная Алхимия</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="bg-orbs">
+    <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
+  </div>
+
+  <main id="app">
+    <!-- Меню старта -->
+    <section id="menu" class="screen">
+      <h1 class="title">Словесная<br/><span>Алхимия</span></h1>
+      <p class="tagline">Собирайте слова из&nbsp;букв&nbsp;— превращайте&nbsp;их в&nbsp;золото&nbsp;и&nbsp;время.</p>
+
+      <div class="rules">
+        <div class="rule"><span class="rule-icon">✦</span><div><b>Стойка букв.</b> На столе 8 букв. Кликайте по ним, чтобы собрать слово, и нажмите «Сложить».</div></div>
+        <div class="rule"><span class="rule-icon">⚡</span><div><b>Комбо.</b> Каждое подряд верное слово увеличивает множитель — до ×5.</div></div>
+        <div class="rule"><span class="rule-icon">⏳</span><div><b>Время.</b> 90 секунд на партию. За каждое слово +секунды. Длинные слова — больше времени и очков.</div></div>
+        <div class="rule"><span class="rule-icon">★</span><div><b>Особые буквы.</b> <span class="lg">Золотая</span> — двойные очки. <span class="lc">Кристалл</span> — бонус-секунды.</div></div>
+      </div>
+
+      <button id="btn-start" class="primary">Начать партию</button>
+      <p class="hint">Совет: можно нажимать буквы на клавиатуре, Enter — сложить, Backspace — удалить, пробел — перемешать.</p>
+    </section>
+
+    <!-- Игра -->
+    <section id="game" class="screen hidden">
+      <header class="hud">
+        <div class="hud-cell">
+          <div class="hud-label">Очки</div>
+          <div id="score" class="hud-value">0</div>
+        </div>
+        <div class="hud-cell timer-cell">
+          <div class="hud-label">Время</div>
+          <div id="timer" class="hud-value">90</div>
+          <div class="timer-bar"><div id="timer-fill"></div></div>
+        </div>
+        <div class="hud-cell">
+          <div class="hud-label">Комбо</div>
+          <div id="combo" class="hud-value">×1.0</div>
+        </div>
+      </header>
+
+      <div id="word-display">
+        <div id="word-text"><span class="placeholder">Выберите буквы…</span></div>
+        <div id="word-meta"></div>
+      </div>
+
+      <div id="rack" class="rack"></div>
+
+      <div class="actions">
+        <button id="btn-clear" class="ghost" title="Backspace">Стереть</button>
+        <button id="btn-submit" class="primary big" title="Enter">Сложить</button>
+        <button id="btn-shuffle" class="ghost" title="Пробел">Перемешать <span id="shuffle-count">3</span></button>
+      </div>
+
+      <section class="found">
+        <h3>Найденные слова <span id="found-count">0</span></h3>
+        <ul id="found-list"></ul>
+      </section>
+
+      <div id="floaters"></div>
+    </section>
+
+    <!-- Экран финала -->
+    <section id="end" class="screen hidden">
+      <h2>Время вышло</h2>
+      <div class="end-stats">
+        <div><div class="hud-label">Очки</div><div id="end-score" class="big-num">0</div></div>
+        <div><div class="hud-label">Слов найдено</div><div id="end-count" class="big-num">0</div></div>
+        <div><div class="hud-label">Лучшее слово</div><div id="end-best" class="big-num">—</div></div>
+        <div><div class="hud-label">Рекорд</div><div id="end-best-score" class="big-num">0</div></div>
+      </div>
+      <div class="end-actions">
+        <button id="btn-again" class="primary">Сыграть ещё</button>
+        <button id="btn-menu" class="ghost">В меню</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
